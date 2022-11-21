@@ -33,7 +33,7 @@ If you have installed StrainKmer and downloaded the [Test_datasets](). Then you 
   StrainKmer - extracting viral strains' k-mers from your sequencing data.
  
  optional arguments:
-    -h,   --help                   Show help message and exit.
+    -h,   --help                  Show help message and exit.
     -i,   SAMPLE_PATH             The dir of input training data.
     -d,   DATABASE_FILE_PATH      The dir of input test data.
     -o,   OUT_PATH                If set to 1, then will only normalize and
