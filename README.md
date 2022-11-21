@@ -34,9 +34,9 @@ If you have installed StrainKmer and downloaded the [Test_datasets](). Then you 
  
  optional arguments:
     -h,   --help                  Show help message and exit.
-    -i,   SAMPLE_PATH             The dir of input training data.
-    -d,   DATABASE_FILE_PATH      The dir of input test data.
-    -o,   OUT_PATH                If set to 1, then will only normalize and
+    -i,   SAMPLE_PATH             Sample files path.
+    -d,   DATABASE_FILE_PATH      The path of pre-built database.
+    -o,   OUT_PATH                The path of output files (default ./)
     -k,   K_VALUE                 K-mer length (k from 14 to 256; default: 25) 
     -ci,  CI_VALUE                Minimal K-mer occurring times (default: 2) 
     -cs,  CS_VALUE                Maximal K-mer occurring times (default: 65535)
