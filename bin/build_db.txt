@@ -1,0 +1,1 @@
+kmc -k25 -fa  -b -ci1 ../../../../../../My_Python_Web_development/StrainDetect_Develop/VstrainDetect/back-end/app/api/DB/HIV/SubCls_kmer.fa ./HIV_sub ./
