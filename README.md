@@ -15,7 +15,7 @@ Yon can install StrainKmer via [Anaconda](https://anaconda.org/) using the comma
 
 `python StrainKmer_for_cmd.py -h`<BR/>
 
-If you have installed StrainKmer and downloaded the [Test_datasets](). Then you can test StrainKmer with the example dataset using the command below.
+If you have installed StrainKmer and downloaded the [Test_data_and_db](https://drive.google.com/file/d/1Zm1kKIG3njiygp1Q5i1t3cVPTpEMQmiO/view?usp=share_link). Then you can test StrainKmer with the example dataset using the command below.
 
 `sh test.sh`<BR/>
 
