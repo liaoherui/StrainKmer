@@ -93,7 +93,7 @@ class KMC_Thread(threading.Thread):
             #out=icount.copy()
             # Run KMC on the input sequnece datasets
 
-            cmd = kmc_command + ' -k' + str(k_value) + ' -ci' + str(ci_value) + ' -cs' + str(cs_value)\
+            cmd = kmc_command + ' -k' + str(k_value) + ' -ci' + str(ci_value) + ' -cs' + str(cs_value)+' -b '\
                   + typelist[i] + flist[i][1] + ' ' + os.path.join(work_dir, flist[i][0])\
                   + ' ' + work_dir
             #print(cmd)
@@ -117,18 +117,18 @@ class KMC_Thread(threading.Thread):
             if r != 0:
                 return 0 / 0
             # Get all kmer count of the data
-            cmd = kmc_tools_command + ' simple '+db_dir+' '+os.path.join(work_dir, flist[i][0]+'_res')+' union '+os.path.join(work_dir, flist[i][0]+'_final_res -ocmax')
-            r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-            if r != 0:
-                return 0 / 0
-            
-            cmd = kmc_tools_command + ' simple ' + db_dir + '_sub ' + os.path.join(work_dir, flist[i][0] + '_sub_res') + ' union ' + os.path.join(work_dir, flist[i][0] + '_final_res_sub -ocmax')
-            r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            if r != 0:
-                return 0 / 0
+            # cmd = kmc_tools_command + ' simple '+db_dir+' '+os.path.join(work_dir, flist[i][0]+'_res')+' union '+os.path.join(work_dir, flist[i][0]+'_final_res -ocmax')
+            # r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            # if r != 0:
+            #     return 0 / 0
+            #
+            # cmd = kmc_tools_command + ' simple ' + db_dir + '_sub ' + os.path.join(work_dir, flist[i][0] + '_sub_res') + ' union ' + os.path.join(work_dir, flist[i][0] + '_final_res_sub -ocmax')
+            # r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            # if r != 0:
+            #     return 0 / 0
             # Dump the result
             cmd = kmc_dump_command + ' -cs' + str(cs_value) + ' '\
-                  + os.path.join(work_dir, flist[i][0] + '_final_res') + ' '\
+                  + os.path.join(work_dir, flist[i][0] + '_res') + ' '\
                   + os.path.join(output_dir, flist[i][0] + '.txt') + ' '\
                   + os.path.join(output_dir, flist[i][0] + '_beacon.txt')
             #print(cmd)
@@ -137,7 +137,7 @@ class KMC_Thread(threading.Thread):
             if r != 0:
                 return 0 / 0
             cmd = kmc_dump_command + ' -cs' + str(cs_value) + ' '\
-                  + os.path.join(work_dir, flist[i][0] + '_final_res_sub') + ' '\
+                  + os.path.join(work_dir, flist[i][0] + '_sub_res') + ' '\
                   + os.path.join(output_dir, flist[i][0] + '_sub.txt') + ' '\
                   + os.path.join(output_dir, flist[i][0] + '_beacon_sub.txt')
             r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -145,47 +145,109 @@ class KMC_Thread(threading.Thread):
             if r != 0:
                 return 0 / 0
 
+            cmd = kmc_dump_command + ' ' \
+                  + db_dir + ' ' \
+                  + db_dir + '.txt'
+            r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+            # print(cmd)
+            if r != 0:
+                return 0 / 0
+
+            cmd = kmc_dump_command + ' ' \
+                  + db_dir + '_sub ' \
+                  + db_dir + '_sub.txt'
+            r = subprocess.call(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+            # print(cmd)
+            if r != 0:
+                return 0 / 0
+
+            fd1 = open(db_dir + '.txt', 'r')
+            kmr_arr = []
+            while True:
+                line = fd1.readline().strip()
+                if not line: break
+                ele = line.split()
+                kmr_arr.append(ele[0])
+            fd1.close()
+            # print(kmr_arr)
+            fd2 = open(db_dir + '_sub.txt', 'r')
+            kmr_sub_arr = []
+            while True:
+                line = fd2.readline().strip()
+                if not line: break
+                ele = line.split()
+                kmr_sub_arr.append(ele[0])
+            fd2.close()
+
             os.remove(os.path.join(work_dir, flist[i][0] + '.kmc_pre'))
             os.remove(os.path.join(work_dir, flist[i][0] + '.kmc_suf'))
+
             os.remove(os.path.join(work_dir, flist[i][0] + '_res.kmc_pre'))
             os.remove(os.path.join(work_dir, flist[i][0] + '_res.kmc_suf'))
             os.remove(os.path.join(work_dir, flist[i][0] + '_sub_res.kmc_pre'))
             os.remove(os.path.join(work_dir, flist[i][0] + '_sub_res.kmc_suf'))
-            os.remove(os.path.join(work_dir, flist[i][0] + '_final_res.kmc_pre'))
-            os.remove(os.path.join(work_dir, flist[i][0] + '_final_res.kmc_suf'))
-            os.remove(os.path.join(work_dir, flist[i][0] + '_final_res_sub.kmc_pre'))
-            os.remove(os.path.join(work_dir, flist[i][0] + '_final_res_sub.kmc_suf'))
-            os.remove(os.path.join(output_dir, flist[i][0] + '_beacon.txt'))
-            os.remove(os.path.join(output_dir, flist[i][0] + '_beacon_sub.txt'))
             #print('finished')
             #exit()
+            os.remove(db_dir + '.txt')
+            os.remove(db_dir + '_sub.txt')
 
             #print(os.path.join(output_dir, flist[i][0] + '.txt'))
 
-            out=[]
-            f2=open(os.path.join(output_dir, flist[i][0] + '.txt'), 'r')
+            out = []
+            kcd = {}
+            f2 = open(os.path.join(output_dir, flist[i][0] + '.txt'), 'r')
             while True:
-                line=f2.readline().strip()
-                if not line:break
-                ele=line.split()
-                #print(ele)
-                out.append(int(ele[1]))
+                line = f2.readline().strip()
+                if not line: break
+                ele = line.split()
+                kcd[ele[0]] = int(ele[1])
+                # print(ele)
+                # out.append(int(ele[1]))
             f2.close()
-            out=np.array(out)
-            spa=sp.csr_matrix(out)
+            o4 = open(os.path.join(output_dir, flist[i][0] + '_sort.txt'), 'w+')
+            for a in kmr_arr:
+                if a not in kcd:
+                    out.append(0)
+                    o4.write(a + '\t0\n')
+                else:
+                    out.append(kcd[a])
+                    o4.write(a + '\t' + str(kcd[a]) + '\n')
+            o4.close()
+            out = np.array(out)
+            spa = sp.csr_matrix(out)
             sp.save_npz(os.path.join(output_dir, flist[i][0] + '.npz'), spa)
 
-            out2=[]
-            f3=open(os.path.join(output_dir, flist[i][0] + '_sub.txt'), 'r')
+            out2 = []
+            kcd2 = {}
+            f3 = open(os.path.join(output_dir, flist[i][0] + '_sub.txt'), 'r')
+
             while True:
-                line=f3.readline().strip()
-                if not line:break
-                ele=line.split()
-                #print(ele)
-                out2.append(int(ele[1]))
+                line = f3.readline().strip()
+                if not line: break
+                ele = line.split()
+                # print(ele)
+                kcd2[ele[0]] = int(ele[1])
+
             f3.close()
-            out2=np.array(out2)
-            spa=sp.csr_matrix(out2)
+            o5 = open(os.path.join(output_dir, flist[i][0] + '_sub_sort.txt'), 'w+')
+            for a in kmr_sub_arr:
+                if a not in kcd2:
+                    out2.append(0)
+                    o5.write(a + '\t0\n')
+                else:
+                    out2.append(kcd2[a])
+                    o5.write(a + '\t' + str(kcd2[a]) + '\n')
+            o5.close()
+
+            # print('plan to remove tem files')
+            os.remove(os.path.join(output_dir, flist[i][0] + '.txt'))
+            os.remove(os.path.join(output_dir, flist[i][0] + '_sub.txt'))
+            # print('remove done')
+
+            out2 = np.array(out2)
+            spa = sp.csr_matrix(out2)
             sp.save_npz(os.path.join(output_dir, flist[i][0] + '_sub.npz'), spa)
 
             #os.remove(os.path.join(output_dir, flist[i][0] + '.txt'))
