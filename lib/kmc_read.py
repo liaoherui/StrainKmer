@@ -51,8 +51,9 @@ class KMC_Thread(threading.Thread):
         flist = []
         typelist = []
 
-		if not os.path.exists(output_dir):
-			os.makedirs(output_dir)
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
 
 
         if system_platform == 'Windows':
