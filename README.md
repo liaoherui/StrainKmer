@@ -1,6 +1,9 @@
 # StrainKmer
 StrainKmer- an efficient and user-friendly tool for extracting viral strains' k-mers from raw sequencing data
 
+[Windows GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Windows.zip), [Mac GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Mac.zip) (Direct download)<BR/>
+[Windows GUI version](https://drive.google.com/file/d/1xg5Vd6KajFB9CG53JNl75e8Mb-iwmEcH/view?usp=sharing), [Mac GUI version](https://drive.google.com/file/d/1cAzu1wjGW2Z6qE7A8VbyJetdH4MUOdwp/view?usp=sharing) (Google drive)
+
 ## Install
 
 Yon can install StrainKmer via [Anaconda](https://anaconda.org/) using the commands below:<BR/>
