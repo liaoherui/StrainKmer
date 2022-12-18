@@ -1,8 +1,8 @@
 # StrainKmer
 StrainKmer- an efficient and user-friendly tool for extracting viral strains' k-mers from raw sequencing data
 
-[Windows GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Windows.zip), [Mac GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Mac.zip) (Direct download), [Linux GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Linux.zip) (Direct download)<BR/>
-[Windows GUI version](https://drive.google.com/file/d/1xg5Vd6KajFB9CG53JNl75e8Mb-iwmEcH/view?usp=sharing), [Mac GUI version](https://drive.google.com/file/d/1cAzu1wjGW2Z6qE7A8VbyJetdH4MUOdwp/view?usp=sharing) (Google drive), [Linux GUI version](https://drive.google.com/file/d/1qsj-PKNv1zVw4Onz3HIbExLmgJaaZ-9I/view) (Google drive)
+[Windows GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Windows.zip), [Mac GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Mac.zip), [Linux GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Linux.zip) (Direct download)<BR/>
+[Windows GUI version](https://drive.google.com/file/d/1xg5Vd6KajFB9CG53JNl75e8Mb-iwmEcH/view?usp=sharing), [Mac GUI version](https://drive.google.com/file/d/1cAzu1wjGW2Z6qE7A8VbyJetdH4MUOdwp/view?usp=sharing), [Linux GUI version](https://drive.google.com/file/d/1qsj-PKNv1zVw4Onz3HIbExLmgJaaZ-9I/view) (Google drive)
 
 ## Install
 
