@@ -5,7 +5,11 @@ Download GUI version of StrainKmer:<BR/>
 [Windows GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Windows.zip), [Mac GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Mac.zip), [Linux GUI version](https://strain.ee.cityu.edu.hk/strainkmer/StrainKmer_Linux.zip) (Direct download)<BR/>
 [Windows GUI version](https://drive.google.com/file/d/1xg5Vd6KajFB9CG53JNl75e8Mb-iwmEcH/view?usp=sharing), [Mac GUI version](https://drive.google.com/file/d/1cAzu1wjGW2Z6qE7A8VbyJetdH4MUOdwp/view?usp=sharing), [Linux GUI version](https://drive.google.com/file/d/1bWM-_QRwmOEdtRXUlPDQETlJc2k36zxR/view?usp=sharing) (Google drive)
 
-Note that Mac users need to open terminal and modify `~/.zshrc` file before running KMC in the StrainKmer GUI version:<BR/>
+Important notes:
+1. Note that Mac and Linux users need to open terminal and then use command "chmod" to change the permissions of following files:<BR/>
+Mac: `chmod + x StrainKmer_Mac/StrainKmer` | Linux: `chmod 777 StrainKmer_Linux/StrainKmer`<BR/>
+Mac: `chmod + x StrainKmer_Mac/bin/*` | Linux: `chmod 777 StrainKmer_Linux/bin/*`
+2. Note that Mac users need to open terminal and modify `~/.zshrc` file before running KMC in the StrainKmer GUI version:<BR/>
 First, `vi ~/.zshrc`. Then, add `ulimit -n 2048` to this file, save and quit. Finally, run `bash ~/.zshrc`
 
 ## Install
