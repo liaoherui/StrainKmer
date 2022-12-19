@@ -6,7 +6,7 @@ Download GUI version of StrainKmer:<BR/>
 [Windows GUI version](https://drive.google.com/file/d/1xg5Vd6KajFB9CG53JNl75e8Mb-iwmEcH/view?usp=sharing), [Mac GUI version](https://drive.google.com/file/d/1cAzu1wjGW2Z6qE7A8VbyJetdH4MUOdwp/view?usp=sharing), [Linux GUI version](https://drive.google.com/file/d/1bWM-_QRwmOEdtRXUlPDQETlJc2k36zxR/view?usp=sharing) (Google drive)
 
 Important notes:
-1. Note that Mac and Linux users need to open terminal and then use command "chmod" to change the permissions of following files:<BR/>
+1. Note that Mac and Linux users need to open terminal and then use command "chmod" to change the permissions of following files before using StrainDetect GUI tool:<BR/>
 Mac: `chmod + x StrainKmer_Mac/StrainKmer` | Linux: `chmod 777 StrainKmer_Linux/StrainKmer`<BR/>
 Mac: `chmod + x StrainKmer_Mac/bin/*` | Linux: `chmod 777 StrainKmer_Linux/bin/*`
 2. Note that Mac users need to open terminal and modify `~/.zshrc` file before running KMC in the StrainKmer GUI version:<BR/>
